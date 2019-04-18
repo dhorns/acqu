@@ -38,7 +38,7 @@
       if(NaI_Hits_v_TimeOR) NaI_Hits_v_TimeOR->Draw("colz");
     }
 
-    TTimer* update_timer = new TTimer("watcher->Update();watcher->Draw();",4000);
+    TTimer* update_timer = new TTimer("if (watcher){watcher->Update();watcher->Draw();}",4000);
 
     update_timer->Start();
 }

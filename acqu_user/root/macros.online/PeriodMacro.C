@@ -19,6 +19,13 @@ void PeriodMacro() {
       cmd << " > /dev/null";
       system(cmd.str().c_str());
 
+      Int_t chan = FPD_ScalerCurr->GetMaximumBin();
+      stringstream cmd;
+      cmd << "caput TAGG:TAGG:RatioSumMax ";
+      cmd << FPD_ScalerCurr->Integral()/FPD_ScalerCurr->GetBinContent(chan);
+      cmd << " > /dev/null";
+      system(cmd.str().c_str());
+
       /*
       if(gROOT->FindObject("ScInt4")){
 	if((ScInt4->Integral())>0) {
@@ -86,7 +93,7 @@ void PeriodMacro() {
 
   	//iPrev = iThis;
         //Exclude broken/noisy channels (as of 21.05.2018)
-        if ( i<232 || i == 297 || i == 303 || i == 327)
+        if ( i == 297 || i == 303 || i == 327)
             continue;
   	iPrev = MWPC_Wires_Hits->GetBinContent(i);
         iThis = MWPC_Wires_Hits->GetBinContent(i+1);
@@ -136,16 +143,18 @@ void PeriodMacro() {
   
   // look for shift in NaI
   Bool_t bShift = false;
-  if(gROOT->FindObject("NaI_Hits_v_TimeOR")){
-    Int_t iNBins = ((NaI_Hits_v_TimeOR->GetNbinsX())*(NaI_Hits_v_TimeOR->GetNbinsX()));
-    if((NaI_Hits_v_TimeOR->Integral()) > (10000*720/8)){	
+  TH2* h2cbtime = gROOT->FindObject("NaI_Hits_v_TimeOR");
+  if(h2cbtime){
+    Int_t iNBins = ((h2cbtime->GetNbinsX())*(h2cbtime->GetNbinsX()));
+    if((h2cbtime->Integral()) > (10000*720/8)){	
       TH1D *Proj_NaI;
       for(Int_t i=0; i<720; i+=8){
 	if((i==32) || (i==352) || (i==360) || (i==680)) continue;
-	Proj_NaI = (TH1D*)NaI_Hits_v_TimeOR->ProjectionX("Proj_NaI",i+1,i+8);
+	Proj_NaI = (TH1D*)h2cbtime->ProjectionX("Proj_NaI",i+1,i+8);
 	
 	Double_t dTime = Proj_NaI->GetMean();
-	if((dTime < -10) || (dTime > 20)){
+	//if((dTime < -20) || (dTime > 20)){
+	if((dTime < -30) || (dTime > 20)){  // neutron skin empty target
 	  if(!bShift) printf("Possible problem in NaI_Hits_v_TimeOR - Event %d\n",gAN->GetNDAQEvent());
 	  printf("\t\t\tPeak at %f ns (Channels %3d-%3d)\n",dTime,i,i+7);
 	  if(!bShift) dError += 4000;
@@ -153,7 +162,7 @@ void PeriodMacro() {
 	}
       }
       if(bShift) printf("\n");
-      else NaI_Hits_v_TimeOR->Reset();
+      else h2cbtime->Reset();
     }
   }
   /*
@@ -192,7 +201,7 @@ void PeriodMacro() {
 
   // now write the resulting errors to epics
   stringstream cmd;
-  cmd << "caput GEN:MON:EventsWithError.A " << dError << " > /dev/null";
+  cmd << "caput GEN:MON:EventsWithError " << dError << " > /dev/null";
   system(cmd.str().c_str());
 
   // Perform some online asymmetry
