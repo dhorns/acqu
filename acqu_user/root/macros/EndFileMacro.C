@@ -28,8 +28,11 @@ void EndFileMacro()
   //Build histograms filename from physics and datafile
   sprintf(savename, "%s_%s_hist.root", physname, filename);
   //Save histograms
-  gUAN->SaveAll(savename);
+  //gUAN->SaveAll(savename);
   //gUAN->ZeroAll();
   //printf("All histograms saved to %s and zero'ed\n", savename);
+  TFile* fout = new TFile(savename, "recreate");
+  gROOT->GetList()->Write();
+  delete fout;
   printf("All histograms saved to %s\n", savename);
 }
