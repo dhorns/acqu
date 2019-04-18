@@ -122,6 +122,7 @@ void TA2OnlinePhys::PostInit()
 
 	fTaggedPhoton	= new TA2Particle*[352*2];
 	fTaggerTime		= new Double_t[352*2];
+	fTaggerEnergy		= new Double_t[352*2];
 	fTaggerChannel	= new Int_t[352*2];
 
 	// Define hard coded histograms
@@ -153,6 +154,7 @@ void TA2OnlinePhys::Reconstruct()
 	GetTagger();
 	
 	BasicPhysCheck();
+        NSkinCheck();
 	if( (fCB->GetNaI()->GetNhits()) > 20 ) CBDisplayCheck();
     //if(fNHelicityBits>=2) BeamHelicCheck();
     //FAsymPi0PCheck();
@@ -188,7 +190,27 @@ void TA2OnlinePhys::DefineHistograms()
     Pi0P_Hel0	= new TH3D("PHYS_Pi0P_Hel0",	"Pi0P Events;#theta_{#pi0} (deg);t_{#pi0} (ns);m_{miss} (MeV)", 36, 0, 180, 200, -200, 200, 150, 800, 1100);
     Pi0P_Hel1	= new TH3D("PHYS_Pi0P_Hel1",	"Pi0P Events;#theta_{#pi0} (deg);t_{#pi0} (ns);m_{miss} (MeV)", 36, 0, 180, 200, -200, 200, 150, 800, 1100);
 
-		
+    fH_NSkin_TaggerTime = new TH1F("NSkin_TaggerTime", "NSkin_TaggerTime", 300, -400, 800);
+    fH_NSkin_IM = new TH1F("NSkin_IM", "NSkin_IM;m(2#gamma)", 75, 0, 300);
+    fH_NSkin_IM_ME = new TH2F("NSkin_IM_ME", "NSkin_IM_ME;m(2#gamma);missing energy", 75, 0, 300, 125, -500, 500);
+    fH_NSkin_IM_Eg = new TH2F("NSkin_IM_Eg", "NSkin_IM_Eg;m(2#gamma);E_{#gamma}", 75, 0, 300, 70, 100, 800);
+    fH_NSkin_IM_Theta = new TH2F("NSkin_IM_Theta", "NSkin_IM_Theta;m(2#gamma);#theta_{#pi^{0}}", 75, 0, 300, 60, 0, 180);
+    fH_NSkin_ME_Eg = new TH2F("NSkin_ME_Eg", "NSkin_ME_Eg;missing energy;E_{#gamma}", 125, -500, 500, 70, 100, 800);
+    fH_NSkin_ME_Theta = new TH2F("NSkin_ME_Theta", "NSkin_ME_Theta;missing energy;#theta_{#pi^{0}}", 125, -500, 500, 60, 0, 180);
+    fH_NSkin_IM_Cut_ME = new TH1F("NSkin_IM_Cut_ME", "NSkin_IM_Cut_ME;m(2#gamma)", 75, 0, 300);
+    fH_NSkin_IM_Eg_Cut_ME = new TH2F("NSkin_IM_Eg_Cut_ME", "NSkin_IM_Eg_Cut_ME;m(2#gamma);E_{#gamma}", 75, 0, 300, 70, 100, 800);
+    fH_NSkin_IM_Theta_Cut_ME = new TH2F("NSkin_IM_Theta_Cut_ME", "NSkin_IM_Theta_Cut_ME;m(2#gamma);#theta_{#pi^{0}}", 75, 0, 300, 60, 0, 180);
+    fH_NSkin_ME_Eg_Cut_IM = new TH2F("NSkin_ME_Eg_Cut_IM", "NSkin_ME_Eg_Cut_IM;missing energy;E_{#gamma}", 125, -500, 500, 70, 100, 800);
+    f_NSkin_Energy_Bins = new TAxis(27, 130, 400);
+    fH_NSkin_ME_Theta_Cut_IM = new TH2*[f_NSkin_Energy_Bins->GetNbins()];
+    for (Int_t i = 0; i < f_NSkin_Energy_Bins->GetNbins(); i++)
+    {
+        fH_NSkin_ME_Theta_Cut_IM[i] = new TH2F(TString::Format("NSkin_ME_Theta_Cut_IM_ME_EgBin_%d", i).Data(),
+                                               TString::Format("E_{#gamma} = [%.f,%.f];missing energy;#theta_{#pi^{0}}",
+                                                               f_NSkin_Energy_Bins->GetBinLowEdge(i+1),
+                                                               f_NSkin_Energy_Bins->GetBinUpEdge(i+1)).Data(),
+                                               125, -500, 500, 60, 0, 180);
+    }   
 }
 
 void TA2OnlinePhys::FAsymPi0PCheck()
@@ -347,6 +369,92 @@ void TA2OnlinePhys::BasicPhysCheck()
 	}	
 }
 
+void TA2OnlinePhys::NSkinCheck()
+{
+    // cuts and constants
+    const Double_t limitPromptLow  =   0;
+    const Double_t limitPromptHigh =  50;
+    const Double_t limitBG1Low     = -300;
+    const Double_t limitBG1High    = -100;
+    const Double_t limitBG2Low     =  200;
+    const Double_t limitBG2High    =  500;
+    const Double_t massPi0         = 134.9766;
+    const Double_t massCa40        = 37214.697;
+    const Double_t massCa48        = 44657.272;
+    const Double_t nuclMass        = massCa40;
+
+    // Ca-40 target
+    TLorentzVector p4Target(0, 0, 0, nuclMass);
+    
+    if (fNParticle == 2)
+    {
+
+        TLorentzVector p4Pi0 = fParticleP4[0] + fParticleP4[1]; 
+	Double_t im = p4Pi0.M();
+
+        // loop over tagger hits
+        for (UInt_t i=0; i<fNTagg; i++)
+        {
+            fH_NSkin_TaggerTime->Fill(fTaggerTime[i]);
+        
+            // prompt
+            Double_t weight;
+            if (fTaggerTime[i] > limitPromptLow && fTaggerTime[i] < limitPromptHigh)
+            {   
+                weight = 1;
+            }
+            // check for background region
+            else if ((fTaggerTime[i] > limitBG1Low && fTaggerTime[i] < limitBG1High) ||
+                     (fTaggerTime[i] > limitBG2Low && fTaggerTime[i] < limitBG2High))
+            {
+                weight = - (limitPromptHigh - limitPromptLow) /
+                           (limitBG1High - limitBG1Low + limitBG2High - limitBG2Low);
+            }
+            else
+            {
+                continue;
+            }
+
+            TLorentzVector p4Beam(0, 0, fTaggerEnergy[i], fTaggerEnergy[i]);
+            TLorentzVector p4CM = p4Beam + p4Target;
+            Double_t w = p4CM.M();
+            Double_t e_pi0_cm_calc = (w*w + massPi0*massPi0 - nuclMass*nuclMass) / 2. / w;
+            TLorentzVector p4Pi0CM(p4Pi0);
+            p4Pi0CM.Boost(-p4CM.BoostVector());
+            Double_t e_pi0_cm_meas = p4Pi0CM.E();
+            Double_t me = e_pi0_cm_meas - e_pi0_cm_calc;
+            Double_t theta = p4Pi0.Theta()*TMath::RadToDeg();
+
+            fH_NSkin_IM->Fill(im, weight);
+            fH_NSkin_IM_ME->Fill(im, me, weight);
+            fH_NSkin_IM_Eg->Fill(im, fTaggerEnergy[i], weight);
+            fH_NSkin_IM_Theta->Fill(im, theta, weight);
+            fH_NSkin_ME_Eg->Fill(me, fTaggerEnergy[i], weight);
+            fH_NSkin_ME_Theta->Fill(me, theta, weight);
+            
+            Bool_t meOk = me > -50 && me < 50;
+            Bool_t imOk = im > 110 && im < 160;
+            
+            if (meOk)
+            {
+                fH_NSkin_IM_Cut_ME->Fill(im, weight);
+                fH_NSkin_IM_Eg_Cut_ME->Fill(im, fTaggerEnergy[i], weight);
+                fH_NSkin_IM_Theta_Cut_ME->Fill(im, theta, weight);
+            }
+            if (imOk)
+            {
+                fH_NSkin_ME_Eg_Cut_IM->Fill(me, fTaggerEnergy[i], weight);
+
+                Int_t bin = f_NSkin_Energy_Bins->FindFixBin(fTaggerEnergy[i]) - 1;
+                if (bin >= 0 && bin < f_NSkin_Energy_Bins->GetNbins())
+                {
+                    fH_NSkin_ME_Theta_Cut_IM[bin]->Fill(me, theta, weight);
+                }
+            }
+        }
+    }
+}
+	
 void TA2OnlinePhys::ZeroCounters()
 {
 	fNParticle = 0;
@@ -464,12 +572,15 @@ void TA2OnlinePhys::GetTagger()
 	// Tagger
 	if(fTAGG && fLadder)
 	{
+                Double_t eBeamEnergy = fTAGG->GetBeamEnergy();
+
 		// Collect Tagger M0 Hits
 		fNTagg	= fLadder->GetNhits();
 		for(UInt_t i=0; i<fNTagg; i++)
 		{
 			fTaggerChannel[i]	= fLadder->GetHits(i);
 			fTaggerTime[i]		= (fLadder->GetTimeOR())[i];
+			fTaggerEnergy[i]	= eBeamEnergy - (fLadder->GetECalibration())[fTaggerChannel[i]];
 			fTaggedPhoton[i] 	= fTAGGParticles+i;
 		}
 	
@@ -480,6 +591,7 @@ void TA2OnlinePhys::GetTagger()
 			{
 				fTaggerChannel[fNTagg+i] 	= (fLadder->GetHitsM(m))[i];
 				fTaggerTime[fNTagg+i]	 	= (fLadder->GetTimeORM(m))[i];
+				fTaggerEnergy[fNTagg+i]	 	= eBeamEnergy - (fLadder->GetECalibration())[fTaggerChannel[fNTagg+i]];
 			}
 			fNTagg	+= fLadder->GetNhitsM(m);
 		}

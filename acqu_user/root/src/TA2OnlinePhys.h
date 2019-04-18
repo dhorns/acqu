@@ -63,6 +63,7 @@ class TA2OnlinePhys : public TA2Physics {
 	UInt_t			fNTagg;
 	Int_t*			fTaggerChannel;
 	Double_t*		fTaggerTime;
+	Double_t*		fTaggerEnergy;
 	
 	TLorentzVector* fParticleP4;
 	Int_t*			fParticleApp;
@@ -101,6 +102,20 @@ class TA2OnlinePhys : public TA2Physics {
 
     TH3*	Pi0P_Hel0;
     TH3*	Pi0P_Hel1;
+
+    TH1* fH_NSkin_TaggerTime;
+    TH1* fH_NSkin_IM;
+    TH2* fH_NSkin_IM_ME;
+    TH2* fH_NSkin_IM_Eg;
+    TH2* fH_NSkin_IM_Theta;
+    TH2* fH_NSkin_ME_Eg;
+    TH2* fH_NSkin_ME_Theta;
+    TH1* fH_NSkin_IM_Cut_ME;
+    TH2* fH_NSkin_IM_Eg_Cut_ME;
+    TH2* fH_NSkin_IM_Theta_Cut_ME;
+    TH2* fH_NSkin_ME_Eg_Cut_IM;
+    TAxis* f_NSkin_Energy_Bins;
+    TH2** fH_NSkin_ME_Theta_Cut_IM;
 	
 	protected:
 		void ZeroCounters();
@@ -109,6 +124,7 @@ class TA2OnlinePhys : public TA2Physics {
 		void GetTagger();
 		void DefineHistograms();
 		void BasicPhysCheck();
+		void NSkinCheck();
         void CBDisplayCheck();
         void BeamHelicCheck();
 		void FAsymPi0PCheck();
