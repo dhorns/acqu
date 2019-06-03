@@ -9,7 +9,9 @@
 //--Rev 	JRM Annand  ..3rd Sep 2013  VITEC addition
 //--Rev 	JRM Annand  .22nd Sep 2013  VUPROMT (TAPS) addition
 //--Rev 	JRM Annand  ..3rd Nov 2016  add TDAQ_VPE2xX86_64+, TVME_V785
-//--Update	JRM Annand  .19th Oct 2017  ensure SIS1100 and V1290 added
+//--Rev 	JRM Annand  .19th Oct 2017  ensure SIS1100 and V1290 added
+//--Update	JRM Annand  .14th Feb 2019  add TVME_V2495sca
+//--Update	JRM Annand  .12th Apr 2019  add TVME_V2495adc
 //--Description
 //                *** AcquDAQ++ <-> Root ***
 // DAQ for Sub-Atomic Physics Experiments.
@@ -54,6 +56,8 @@
 #pragma link C++ class TVME_V874+;
 #pragma link C++ class TVME_V1190+;
 #pragma link C++ class TVME_V1290+;
+#pragma link C++ class TVME_V2495sca+;
+#pragma link C++ class TVME_V2495adc+;
 #pragma link C++ class TVME_CATCH+;
 #pragma link C++ class TVME_CATCH_TDC+;
 #pragma link C++ class TVME_CATCH_Scaler+;

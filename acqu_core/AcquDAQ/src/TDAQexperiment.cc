@@ -50,7 +50,9 @@
 //--Rev 	JRM Annand   29nd Mar 2014  Slave ev-ID read before scaler read
 //--Rev 	JRM Annand   14th Oct 2016  Add TDAQ_VP2ExX86_64
 //--Rev 	JRM Annand    3rd Nov 2016  Add TVME_V785
-//--Update	JRM Annand   19th Oct 2017  Ensure add TVME_V1290,TDAQ_SIS1100
+//--Rev 	JRM Annand   19th Oct 2017  Ensure add TVME_V1290,TDAQ_SIS1100
+//--Rev 	JRM Annand   14th Feb 2019  Add TVME_V2495 scaler
+//--Update	JRM Annand   12th Apr 2019  Add TVME_V2495 adc
 
 //
 //--Description
@@ -106,7 +108,10 @@
 #include "TEPICSmodule.h"
 #include "TVME_V965.h"
 #include "TVME_VITEC.h"
+#include "TVME_V2495sca.h"
+#include "TVME_V2495adc.h"
 
+ClassImp(TDAQexperiment)
 
 // recognised setup keywords
 enum { EExpModule, EExpControl, EExpIRQCtrl, EExpStartCtrl, EExpDescription,
@@ -480,6 +485,14 @@ void TDAQexperiment::AddModule( Char_t* line )
     // VMEbus - CAEN 32 channel, multi-hit TDC, 25 ps resolution
     mod = new TVME_V1290( name, file, fLogStream, line );
     break;
+  case ECAEN_V2495sca:
+    // VMEbus - CAEN FPGA based scaler 64-chan, 64-bit
+    mod = new TVME_V2495sca( name, file, fLogStream, line );
+    break;
+  case ECAEN_V2495adc:
+    // VMEbus - CAEN FPGA based scaler....read as adc every event
+    mod = new TVME_V2495adc( name, file, fLogStream, line );
+    break;
   case ECATCH_TDC:
     // VMEbus/CATCH - 128 channel, multi-hit TDC
     if( !fCATCHList ) fCATCHList = new TList();
@@ -722,7 +735,8 @@ void TDAQexperiment::RunIRQ()
   // 1/9/10 if running slave mode call fSupervise->ExecAutoStart()
   //
   if( !(fNADC + fNScaler) ){
-    printf("Warning: <RunIRQ: no IRQ modules loaded>\n");
+    PrintError("","<RunIRQ: no IRQ modules loaded>\n");
+    return;
   }
   TIter nexta( fADCList );
   TIter nexts( fScalerList );
@@ -1109,5 +1123,3 @@ void TDAQexperiment::PostReset( )
   }
   // anything else here
 }
-
-ClassImp(TDAQexperiment)
