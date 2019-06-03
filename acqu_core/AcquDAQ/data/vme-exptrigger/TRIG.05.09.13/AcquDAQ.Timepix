@@ -13,7 +13,7 @@ Control:   GUI-Local	    0 0
 #
 #	module	   Name		configFile
 Module:	KPH_I686   kphi686_0	kphi686.dat		0	 0
-Module: GSI_VUPROM vup0         vuprom.TaggEff		ea000000 0   196 32 
+Module: GSI_VUPROM vup0         vuprom.Timepix		ea000000 0   196 32 
 Module: GSI_VUPROM vup1         vuprom.patt     	ea000000 0   6 8
 Module: GSI_VUPROM vup2         vuprom.sca_coplan 	e8000000 196 32 32
 Module: GSI_VUPROM vup3         vuprom.sca_multi  	e7000000 228 32 32
@@ -41,7 +41,7 @@ Module: CAMAC         vucam     vucam.dat	1	17
 #Module:   EPICS       EPICS   data/EpicsEvent_Scalers.dat  scaler        2
 #Module:   EPICS       EPICS   data/EpicsEvent_2.dat        scaler        0
 #Module:   EPICS       EPICS   data/EpicsScalers.dat       scaler        1
-Module:   EPICS       EPICS   data/EpicsTimepix.dat         trigger       0  -1  16
+Module:   EPICS       EPICS   data/EpicsTimepix.dat         timer        2000
 
 #
 Reset-Ctrl: kphi686_0

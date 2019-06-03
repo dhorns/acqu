@@ -14,7 +14,13 @@ EPICSBaseSetup:      	1           ScalersEPICS
 EPICSchannel:   TAGG:MagneticField           1      epicsDOUBLE
 EPICSchannel:   PPOL:TIMEPIXA:NHITS          1      epicsDOUBLE
 EPICSchannel:   PPOL:TIMEPIXB:NHITS          1      epicsDOUBLE
-EPICSchannel:   PPOL:TIMEPIXA:ENCODED        60000   epicsBYTE
-EPICSchannel:   PPOL:TIMEPIXB:ENCODED        60000   epicsBYTE
-#
+EPICSchannel:   PPOL:TIMEPIXA:EVENT          1      epicsDOUBLE
+EPICSchannel:   PPOL:TIMEPIXB:EVENT          1      epicsDOUBLE
+EPICSchannel:   PPOL:TIMEPIXA:START          1      epicsDOUBLE
+EPICSchannel:   PPOL:TIMEPIXB:START          1      epicsDOUBLE
+EPICSchannel:   PPOL:TIMEPIXA:STOP           1      epicsDOUBLE
+EPICSchannel:   PPOL:TIMEPIXB:STOP           1      epicsDOUBLE 
+EPICSchannel:   PPOL:TIMEPIXA:ENCODED        60000  epicsBYTE
+EPICSchannel:   PPOL:TIMEPIXB:ENCODED        60000  epicsBYTE
+##
 ##

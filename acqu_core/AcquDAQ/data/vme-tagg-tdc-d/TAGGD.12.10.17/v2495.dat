@@ -1,0 +1,28 @@
+##--Rev 	John Annand   19 March 2019  For new CAEN V2495 scaler
+##--Update	
+##                *** AcquDAQ++ <-> Root ***
+## DAQ for Sub-Atomic Physics Experiments.
+##
+BaseSetup:	0		0		ADC    	    9000
+## Hardware ID
+Hardware-ID: 2b138008
+#
+## Configure control register, default set to 0x040
+#AcquCtrl: 340
+#
+## Enable channels default 0xffffffff 0xffffffff 0 0 0 (section A,B ON)
+ChanEnable: 00030000 0 0 0 0
+#ChanEnable: ffffffff 0 0 0 0
+#
+## Dwell Time default 1 = 1us
+#DwellTime: 1
+#
+## Use a software trigger, default not
+SWTrigger:
+#
+## Turn on flush of counters every read
+## Default is 0x4
+ResetData: 0
+#
+#	End of File
+#
