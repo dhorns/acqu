@@ -21,7 +21,6 @@ class TVME_V965 : public TVME_V792 {
   TVME_V965( Char_t*, Char_t*, FILE*, Char_t* );
   virtual ~TVME_V965();
   void ReadIRQ( void** );
-  virtual Bool_t CheckHardID();
   ClassDef(TVME_V965,1)   
     };
 

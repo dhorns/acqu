@@ -15,6 +15,7 @@
 #include "TDAQexperiment.h"
 //#include "TDAQmemmap.h"
 
+ClassImp(TVME_V965)
 
 //-----------------------------------------------------------------------------
 TVME_V965::TVME_V965( Char_t* name, Char_t* file, FILE* log, Char_t* line )
@@ -119,22 +120,3 @@ void TVME_V965::ReadIRQ( void** outBuffer )
   ResetData();
   return;
 }
-
-//-------------------------------------------------------------------------
-Bool_t TVME_V965::CheckHardID( )
-{
-
-  // Read module ID from internal ROM
-  Int_t id = Read(EV7XX_ID2) & 0xff;
-  id |= (Read(EV7XX_ID1) & 0xff) << 8;
-  id |= (Read(EV7XX_ID0) & 0xff) << 16;
-  Int_t fw = Read(EV7XX_Firmware) & 0xffff;
-  fprintf(fLogStream,"V965 ID Read: %d  Expected: %d  Firmware: %x\n",
-	  id,fHardID,fw);
-  if( id == fHardID ) return kTRUE;
-  else
-    PrintError("","<CAEN V965 ADC hardware ID read error>",EErrFatal);
-  return kFALSE;
-}
-
-ClassImp(TVME_V965)
