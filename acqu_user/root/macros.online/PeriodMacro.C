@@ -336,23 +336,4 @@ void PeriodMacro() {
       system(cmdT.str().c_str());
   }
 
-  // See if the PID signals are still coming in
-  if(gROOT->FindObject("PID_Hits")){
-    if(gROOT->FindObject("Prev_PID_Hits")){
-      Double_t intgr = PID_Hits->Integral();
-      Double_t intgrPrev = Prev_PID_Hits->Integral();
-      if(intgr == intgrPrev){
-        printf("PID Hits no longer increasing. Previous no = %f, Current no = %f \n",intgrPrev,intgr);
-      }
-      // TEST
-      //if(intgr > intgrPrev){
-      //  printf("PID Hits is increasing YAY. Previous no = %f, Current no = %f \n",intgrPrev,intgr);
-      //}
-      delete Prev_PID_Hits;
-      TH1D *Prev_PID_Hits = (TH1D*)PID_Hits->Clone("Prev_PID_Hits");
-    }
-    else TH1D *Prev_PID_Hits = (TH1D*)PID_Hits->Clone("Prev_PID_Hits");
-
-  }
-
 }
