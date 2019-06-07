@@ -392,3 +392,12 @@ Initialise:
 #Display:    1D      Time        4096    0   4096    0   384
 Display:     2D      Energy    4096 0 4096  -1    Hits   384  0 384  -1
 ##
+Display: 1D	NADChits    32 0 32
+Display: 1D	NTDChits    32 0 32
+Display: 1D     Nhits       32 0 32
+Display: 1D	ADCHits	    384 0 384
+Display: 1D	TDCHits	    384 0 384
+Display: 1D     Hits        384 0 384
+Display: 1D     TimeOR      300 -150 150
+Display: 2D     EnergyOR    100 0 10 -1     Hits   384  0 384 -1
+Display: 2D     TimeOR      300 -150 150 -1  Hits   384  0 384 -1
