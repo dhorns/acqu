@@ -371,7 +371,8 @@ TDAQguiCtrl::TDAQguiCtrl( TDAQsupervise* s, const TGWindow* w )
   fEventRate->GetXaxis()->SetTitle("Elapsed Run Time (s)");
   fEventRate->SetFillColor(kBlue);
   // Show run information
-  ShowRun();
+  fExp->SetText( fSupervise->GetRunDesc() );
+  fCom->SetText( fSupervise->GetComment() );
   // Set up the timed stuff
   // default run every sec.
   fLastEvent = 0;
@@ -415,8 +416,10 @@ void TDAQguiCtrl::ShowRun()
   // Show run information
   fExp->SetText( fSupervise->GetRunDesc() );
   fCom->SetText( fSupervise->GetComment() );
-  fFile->SetText( fSupervise->GetFileName() );
-  fRun->SetIntNumber( fSupervise->GetRunNumber() );
+  if( fSupervise->GetEXP()->IsStore() ){
+    fFile->SetText( fSupervise->GetFileName() );
+    fRun->SetIntNumber( fSupervise->GetRunNumber() );
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -543,8 +546,10 @@ void TDAQguiCtrl::Update()
     LoadMsgBuffer( fSupervise->GetCommandLine());
   }
   if(!IsRunning()) return;
-  fFile->SetText( fSupervise->GetFileName() );
-  fRun->SetIntNumber( fSupervise->GetRunNumber() );
+  if( fSupervise->GetEXP()->IsStore() ){
+    fFile->SetText( fSupervise->GetFileName() );
+    fRun->SetIntNumber( fSupervise->GetRunNumber() );
+  }
   fMsg->ShowBottom();
   GetAnalysis();
   GetTrigger();
