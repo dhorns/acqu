@@ -19,10 +19,13 @@ EPICSchannel:   TAGG:TAGG:SumRate            1       epicsDOUBLE
 EPICSchannel:   BEAM:FaradayCup              1       epicsDOUBLE
 EPICSchannel:   BEAM:IonChamber              1       epicsDOUBLE
 EPICSchannel:   TRIG:Trigger                 1       epicsDOUBLE
+EPICSchannel:   TRIG:TotalLivetime           1       epicsDOUBLE
 EPICSchannel:   CB:MWPC:HV:CH0:Vmon:RBV      1       epicsDOUBLE
 EPICSchannel:   CB:MWPC:HV:CH0:Imon:RBV      1       epicsDOUBLE
 EPICSchannel:   CB:MWPC:HV:CH1:Vmon:RBV      1       epicsDOUBLE
 EPICSchannel:   CB:MWPC:HV:CH1:Imon:RBV      1       epicsDOUBLE
 EPICSchannel:   BEAM:PhotonCam:CenterX       1       epicsDOUBLE
 EPICSchannel:   BEAM:PhotonCam:CenterY       1       epicsDOUBLE
+EPICSchannel:   TARGET:HE:RuO2L              1       epicsDOUBLE
+EPICSchannel:   TARGET:HE:P_TCELL_Vac        1       epicsDOUBLE
 ##
