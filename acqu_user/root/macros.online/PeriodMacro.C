@@ -107,7 +107,7 @@ void PeriodMacro() {
     }
     if((MWPC_Wires_Hits->Integral()) > (400*iNBins)) MWPC_Wires_Hits->Reset();
   }
-  /*
+
   // look for shift in FPD
   int nrebin = 2;
   if(gROOT->FindObject("FPD_TimeAll")){
@@ -140,7 +140,7 @@ void PeriodMacro() {
       delete Temp_FPD;
     }
   }
-  */
+
   // look for shift in NaI
   Bool_t bShift = false;
   TH2* h2cbtime = gROOT->FindObject("NaI_Hits_v_TimeOR");
