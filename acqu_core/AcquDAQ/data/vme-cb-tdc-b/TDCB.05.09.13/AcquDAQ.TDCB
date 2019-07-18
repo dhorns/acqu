@@ -1,6 +1,6 @@
 ####
 #Mk1-Format:
-File-Name: scratch/CB 32	500000	131072	ENet  131072  3027
+File-Name: scratch/CB 32	500000	32768	ENet  32768  3027
 #File-Name: scratch/CB 32	500000	32768	No-Store  32768  3027
 # Frequency            Scaler	Slow-Control
 Event-Counters:	       20000000	2000000000			
