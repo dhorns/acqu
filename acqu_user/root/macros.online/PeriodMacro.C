@@ -109,7 +109,7 @@ void PeriodMacro() {
   }
 
   // look for shift in FPD
-  int nrebin = 2;
+  int nrebin = 1;
   if(gROOT->FindObject("FPD_TimeAll")){
     Int_t iNBins = FPD_TimeAll->GetNbinsX();
     if((FPD_TimeAll->Integral()) > (100*iNBins)){
@@ -154,7 +154,7 @@ void PeriodMacro() {
 	
 	Double_t dTime = Proj_NaI->GetMean();
 	//if((dTime < -20) || (dTime > 20)){
-	if((dTime < -30) || (dTime > 20)){  // neutron skin empty target
+	if((dTime < -30) || (dTime > 30)){  // etaomega
 	  if(!bShift) printf("Possible problem in NaI_Hits_v_TimeOR - Event %d\n",gAN->GetNDAQEvent());
 	  printf("\t\t\tPeak at %f ns (Channels %3d-%3d)\n",dTime,i,i+7);
 	  if(!bShift) dError += 4000;
