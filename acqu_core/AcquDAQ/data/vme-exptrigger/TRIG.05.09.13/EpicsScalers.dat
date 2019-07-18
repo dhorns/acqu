@@ -26,6 +26,5 @@ EPICSchannel:   CB:MWPC:HV:CH1:Vmon:RBV      1       epicsDOUBLE
 EPICSchannel:   CB:MWPC:HV:CH1:Imon:RBV      1       epicsDOUBLE
 EPICSchannel:   BEAM:PhotonCam:CenterX       1       epicsDOUBLE
 EPICSchannel:   BEAM:PhotonCam:CenterY       1       epicsDOUBLE
-EPICSchannel:   TARGET:HE:RuO2L              1       epicsDOUBLE
-EPICSchannel:   TARGET:HE:P_TCELL_Vac        1       epicsDOUBLE
+EPICSchannel:   TARGET:H2:Pcible             1       epicsDOUBLE
 ##
