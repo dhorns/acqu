@@ -108,6 +108,14 @@ void PeriodMacro() {
     if((MWPC_Wires_Hits->Integral()) > (400*iNBins)) MWPC_Wires_Hits->Reset();
   }
 
+  // If the PID_Hits is added to the WatchMe spectra then this make sure it is
+  // cleared evey once in a while in order to see if the PID hits keeps filling
+  //if(gROOT->FindObject("PID_Hits")){
+  //  Int_t iNBins = PID_Hits->GetNbinsX();
+  //
+  //  if((PID_Hits->Integral()) > (200*iNBins))PID_Hits->Reset();
+  //}
+
   // look for shift in FPD
   int nrebin = 1;
   if(gROOT->FindObject("FPD_TimeAll")){
