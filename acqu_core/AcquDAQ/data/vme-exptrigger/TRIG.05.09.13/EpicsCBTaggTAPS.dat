@@ -13,8 +13,18 @@ EPICSBaseSetup:      	1           ScalersEPICS
 #               PVName			     Nelem   Type (epicsBYTE,epicsSHORT,epicsLONG,epicsFLOAT,epicsDOUBLE)
 EPICSchannel:   TAGG:MagneticField           1       epicsDOUBLE
 EPICSchannel:   TAGG:DipoleCurrent           1       epicsDOUBLE
+EPICSchannel:   TAGG:TAGG:LadderP2Ratio      1       epicsDOUBLE
 EPICSchannel:   TAGG:TAGG:MaxRate            1       epicsDOUBLE
 EPICSchannel:   TAGG:TAGG:SumRate            1       epicsDOUBLE
+EPICSchannel:   BEAM:FaradayCup              1       epicsDOUBLE
+EPICSchannel:   BEAM:IonChamber              1       epicsDOUBLE
 EPICSchannel:   TRIG:Trigger                 1       epicsDOUBLE
 EPICSchannel:   TRIG:TotalLivetime           1       epicsDOUBLE
+EPICSchannel:   CB:MWPC:HV:CH0:Vmon:RBV      1       epicsDOUBLE
+EPICSchannel:   CB:MWPC:HV:CH0:Imon:RBV      1       epicsDOUBLE
+EPICSchannel:   CB:MWPC:HV:CH1:Vmon:RBV      1       epicsDOUBLE
+EPICSchannel:   CB:MWPC:HV:CH1:Imon:RBV      1       epicsDOUBLE
+EPICSchannel:   BEAM:PhotonCam:CenterX       1       epicsDOUBLE
+EPICSchannel:   BEAM:PhotonCam:CenterY       1       epicsDOUBLE
+EPICSchannel:   TARGET:H2:Pcible             1       epicsDOUBLE
 ##
