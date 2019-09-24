@@ -243,7 +243,7 @@ my $statusToString =
    3 => 'Stopped (but partially started or inconsistent)',
    4 => 'Unknown / SSH Error'
   };
-my $trigger_baseurl = 'http://wwwa2.kph.uni-mainz.de/intern/trigger';
+my $trigger_baseurl = 'http://www-a2.kph.uni-mainz.de/intern/trigger';
 my $acqu_datadir = '$HOME/acqu/data'; # were to find the data dir on VME hosts
 #####my $AcquBin = '/opt/acqu/build/bin'; # where can we find RSupervise, AcquControl, ...
 my $AcquBin = '/AcquBin'; # where can we find RSupervise, AcquControl, ...
