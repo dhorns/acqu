@@ -26,6 +26,12 @@ void PeriodMacro() {
       cmd << " > /dev/null";
       system(cmd.str().c_str());
 
+      stringstream cmd;
+      cmd << "caput TAGG:TAGG:MaxChan ";
+      cmd << chan-1;
+      cmd << " > /dev/null";
+      system(cmd.str().c_str());
+
       /*
       if(gROOT->FindObject("ScInt4")){
 	if((ScInt4->Integral())>0) {
@@ -183,10 +189,10 @@ void PeriodMacro() {
   */
   // Check Archiver
   TString sArchive = gSystem->GetFromPipe("echo 'http://slowcontrol:4812/main' | wget -O- -i- -q | grep -A 1 '>State<' | grep -v State | sed 's/ /_/g' | sed 's/>/ /g' | sed 's/</ /g' | awk '{print $3}'");
-  if(!sArchive.Contains("RUNNING")){
-    printf("Possible problem with EPICS Archiver - Event %d\n\n",gAN->GetNDAQEvent());
-    dError += 16000;
-  }
+//  if(!sArchive.Contains("RUNNING")){
+//    printf("Possible problem with EPICS Archiver - Event %d\n\n",gAN->GetNDAQEvent());
+//    dError += 16000;
+//  }
 
   // determine number of events with a hardware error
   if((gROOT->FindObject("NHardwareError")) && (dError == 0)){
