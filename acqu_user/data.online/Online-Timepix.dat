@@ -18,7 +18,7 @@ Directory: scratch/
 Analysis: TA2UserAnalysis
 ##
 ## Analysis setup file
-AnalysisSetup: Analysis-TaggEff.dat
+AnalysisSetup: Analysis-Timepix.dat
 ##
 ServerSetup: Server-Timepix.dat
 #

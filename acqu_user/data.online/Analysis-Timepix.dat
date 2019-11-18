@@ -23,9 +23,9 @@ BitPattern:  ./data/monitor/Trig-Pattern-TaggEff.dat
 ## Apparatus setup....
 ## Raw analysis may be performed without Apparati
 ##              Name            Class           	Setup file
-Apparatus:      TAGG           TA2Tagger   		Apparatus-Tagger1508.dat
+Apparatus:      TAGG           TA2Tagger   		Apparatus-Tagger1604.dat
 #Apparatus:      LinPol          TA2LinearPolEpics       Apparatus-LinearPol.dat
-#Apparatus:      BeamPolMon      TA2BeamPolMon           Apparatus-BeamPolMon.dat
+Apparatus:      BeamPolMon      TA2BeamPolMon           Apparatus-BeamPolMon.dat
 ##
 ## Turn on apparatus-level reconstruction
 #Reconstruct-Analysis:
@@ -34,6 +34,9 @@ Apparatus:      TAGG           TA2Tagger   		Apparatus-Tagger1508.dat
 Initialise:
 ##
 # Macros
+#Period: 100000	PeriodMacroTaggEff.C	PeriodMacroTaggEff()
+#Period:  3000	PeriodMacroTaggEff.C	PeriodMacroTaggEff()
+#Period:   1000	PeriodMacroTaggEff.C	PeriodMacroTaggEff()
 Period:   1000	PeriodMacro.C	PeriodMacro()
 #EndFile:	EndFileMacro.C  EndFileMacro()
 #Finish:	FinishMacro.C	FinishMacro()
@@ -80,4 +83,20 @@ Display: SumScaler 0 191
 Display: Scaler 2000 3000
 Display: SumScaler 2000 3000
 #
+## Time dependence of individual scaler rates and ratios
+#Display: Rate	0	2500
+#Display: Rate	1	2500
+#Display: Rate	2	2500
+##
+########################################################################
+## Display Trigger Patterns (and e-beam polarization bit)
+########################################################################
+##
+Display: Pattern	0 48 0 48
+Display: Pattern	1 64 0 64
+Display: Pattern	2 16 0 16
+Display: Pattern	3 16 0 16
+Display: Pattern-N	1 32 0 32
+##
+##
 ## END OF FILE
