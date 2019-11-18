@@ -21,13 +21,13 @@ void PeriodMacro() {
 
       Int_t chan = FPD_ScalerCurr->GetMaximumBin();
       stringstream cmd;
-      cmd << "caput TAGG:TAGG:RatioSumMax ";
-      cmd << FPD_ScalerCurr->Integral()/FPD_ScalerCurr->GetBinContent(chan);
+      cmd << "caput TAGG:TAGG:RatioSumMax.A ";
+      cmd << FPD_ScalerCurr->Integral(0,-1)/FPD_ScalerCurr->GetBinContent(chan);
       cmd << " > /dev/null";
       system(cmd.str().c_str());
 
       stringstream cmd;
-      cmd << "caput TAGG:TAGG:MaxChan ";
+      cmd << "caput TAGG:TAGG:MaxChan.A ";
       cmd << chan-1;
       cmd << " > /dev/null";
       system(cmd.str().c_str());
