@@ -138,8 +138,8 @@ $runsets->{Timepix} =
    'DefaultTriggerId' => 74,
    'Hosts' => [
                ['vme-exptrigger',   'Timepix'], # first, the host where the AcquDAQ GUI is started
-               ['vme-tagg-tdc-c',   'TAGGC_NoDMA_Timepix'],
                ['vme-tagg-tdc-d',   'TAGGD_NoDMA_Timepix'],
+               ['vme-tagg-tdc-c',   'TAGGC_NoDMA_Timepix'],
                ['vme-tagg-tdc-e',   'TAGGE_NoDMA_Timepix'],
                ['vme-beampolmon',   'BEAM_Timepix']
               ],
