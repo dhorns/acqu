@@ -1,4 +1,5 @@
 File-Name: scratch/AcquDAQ 32	5000000	262144 ENet  262144  6033
+#File-Name: scratch/AcquDAQ 32	5000000	262144 ENet  262144  6032
 #File-Name: scratch/AcquDAQ 32	5000000	32768 No-Store  32768  6033
 
 # Frequency            Scaler	Slow-Control
@@ -18,8 +19,8 @@ Module: KPH_VITEC  vit0         vitec_0.dat 0 0 0
 ## TCS module should come before any CATCH, other VME doesn't care
 #Module: CATCH_TCS    tcs0       catchTCS.d      00e00000     0    1     0
 ##
-Module: CAEN_V1190 v1190_1  v1190_NoDMA.dat   e0000000 800    128     14
 Module: CAEN_V2495adc v2495_0 v2495.dat     e0020000 100    6      16
+Module: CAEN_V1190 v1190_1  v1190_NoDMA.dat   e0000000 800    128     14
 #Module: CBD_8210   cbd0	    cbd8210_0.dat 800000  0	0
 #
 #----------------------------------------	crate	station
