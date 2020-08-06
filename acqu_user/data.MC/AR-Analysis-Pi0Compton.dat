@@ -22,7 +22,7 @@ Pi0-Random-Windows: 0 0 0 0
 Pi0-Invariant-Mass-Cuts: 125 145
 #
 # Produce Physics class tree file? 0/1 = off/on
-Produce-Tree-File: 1
+Produce-Tree-File: 0
 #
 # Tree file name if Produce-Tree-File is on
 Tree-File-Name: TA2Pi0ComptonMC.root

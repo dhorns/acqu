@@ -36,8 +36,8 @@ Reconstruct-Analysis:
 #High-level physics analysis, processing 4-vectors produced by apparatus
 #classes.
 ##                 	Name  	Class       	Configuration File
-Physics-Analysis:	PHYS	TA2GoAT		AR-Analysis-GoAT.dat
-#Physics-Analysis:	PHYS	TA2Pi0Compton	AR-Analysis-Pi0Compton.dat
+#Physics-Analysis:	PHYS	TA2GoAT		AR-Analysis-GoAT.dat
+Physics-Analysis:	PHYS	TA2Pi0Compton	AR-Analysis-Pi0Compton.dat
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -54,6 +54,7 @@ Initialise:
 Period:  10000         root/macros/PeriodMacro.C   PeriodMacro()
 #
 #        Macro file name  		Macro funcion
+Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARHistograms_MC.root")
 #Finish:	 root/macros/FinishMacro.C	FinishMacro("ARHistograms_MC.root")
 Finish:	 root/macros/FinishBatch.C	FinishBatch()
 #Finish:	 root/macros/FinishBatch.C	FinishBatch("A2G4")
