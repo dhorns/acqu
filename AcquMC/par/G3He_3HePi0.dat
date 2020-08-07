@@ -1,0 +1,47 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   11th May 2006
+##--Update
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data 
+##
+## Master parameter file for Monte Carlo reaction event generator
+## Expected to reside in directory $acqu/data/
+## Radiative Pi0 photo production on the proton
+## Radiated photon energy from Breit-Wigner
+## To use invoke... MCGenerator GP_GPPi0.dat
+##-----------------------------------------------------------------------
+##		#events/run	Random seed	#runs
+#Number-Throws:	500000		888888		10
+Number-Throws:	100000		888888		1
+##
+## Baryon resonances
+##		Name	PDG code
+Resonance:	P33	2214
+##		Name	Peak Mass(GeV)	Width(GeV)
+Resonance:	S11	3.0		0.000001
+##
+## Beam parameters
+##	Mass (GeV)	Source x,y,z (cm)
+Beam: 	0.0 		0.0 0.0 -500.
+## Beam Kinetic Energy	Form					min max  #pts 
+#P-Distr: Beam T-Dist	1/x					0.10 0.15 100
+P-Distr: Beam T-Dist	1/x					0.199 0.201 100
+P-Distr: Beam Cos(Theta)   TMath::Gaus(x,1.0,0.000001)	  0.9999975 1.0  2000
+##
+##	Mass	Radius	Length	Center (x,y,z)
+Target:  1000020030 0.75 40.0   0.0 0.0 0.0
+##
+## The reaction "particle"
+#Particle: 3He	2.80839	1	0	NULL	NULL
+Particle: 3He	1000020030	1	0	NULL	NULL
+##
+##	  Name		PDG		Decay?	Track?	Parent	Opt
+Particle  Pi0		111		0	0	3He	NULL
+Particle  3He1		1000020030	0	1	3He	NULL
+## Pi0 decay particles
+Particle: Gamma_1	22	0	1	Pi0	NULL
+Particle: Gamma_2	22	0	1	Pi0	NULL
+##
+#Tree-Output:    /scratch/jrma/G3He_G3He_2MT	2
+Ntuple-Output:  out/3He/3HePi0/200_100000

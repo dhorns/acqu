@@ -1,0 +1,48 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   11th May 2006
+##--Update
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data 
+##
+## Master parameter file for Monte Carlo reaction event generator
+## Expected to reside in directory $acqu/data/
+## Radiative Pi0 photo production on the proton
+## Radiated photon energy from Breit-Wigner
+## To use invoke... MCGenerator GP_GPPi0.dat
+##-----------------------------------------------------------------------
+##Foam-Model:	Dgp
+##		#events/run	Random seed	#runs
+Number-Throws:	100000		888888		1
+##
+## Baryon resonances
+##		Name	PDG code
+Resonance:	P33	2214
+##		Name	Peak Mass(GeV)	Width(GeV)
+Resonance:	S11	1.535		0.150
+##
+## Beam parameters, energy from Foam, theta...cos(theta) = Gaussian
+##	PDG-index	Source x,y,z (cm)
+Beam: 	22		0.0 0.0 -500.
+P-Distr: Beam T-Dist 1/x  0.295 0.305 1000
+P-Distr: Beam Cos(Theta)   TMath::Gaus(x,1.0,0.000001)	0.9999975 1.0  2000
+##
+##		Mass		Radius	Length	Center (x,y,z)
+Target: 	1000020040 	0.75	28.8   	0.0 0.0 0.0
+##
+## The reaction "particle" QF proton
+##	  Name		PDG/Res	Decay?	Track?	Parent	 Opt
+Particle: Reaction 1000020040	1	0	NULL	 Quasi-Free-NBC
+##
+##	  Name		PDG	Decay?	Track?	Parent	Opt
+Particle: QP		2212    1	0	Reaction NULL
+P-Distr: QP P-Dist x*x*TMath::Gaus(x,0.0,0.06) 0.0 0.75 5000
+Particle: H3   1000010030	0	1	Reaction NULL
+#
+Particle  Pi0		111	1	0	QP      NULL
+Particle: Proton	2212	0	1	QP      NULL
+# Pi0 decay particles
+Particle: Gamma_1	22	0	1	Pi0	NULL	
+Particle: Gamma_2	22	0	1	Pi0	NULL	
+Ntuple-Output:  out/4He/G4He_Pi0P3H_QF_300MeV
+#Tree-Output:    /scratch/jrma/G4He_GPN2H_QF_1MT	2

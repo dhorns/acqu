@@ -1,0 +1,44 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   11th May 2006
+##--Update
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data 
+##
+## Master parameter file for Monte Carlo reaction event generator
+## Expected to reside in directory $acqu/data/
+## Radiative Pi0 photo production on the proton
+## Radiated photon energy from Breit-Wigner
+## To use invoke... MCGenerator GP_GPPi0.dat
+##-----------------------------------------------------------------------
+##		#events/run	Random seed	#runs
+#Number-Throws:	500000		888888		10
+Number-Throws:	10000		888888		1
+##
+## Baryon resonances
+##		Name	PDG code
+Resonance:	P33	2214
+##		Name	Peak Mass(GeV)	Width(GeV)
+Resonance:	S11	3.0		0.000001
+##
+## Beam parameters
+##	Mass (GeV)	Source x,y,z (cm)
+Beam: 	0.0 		0.0 0.0 -500.
+## Beam Kinetic Energy	Form					min max  #pts 
+P-Distr: Beam T-Dist	1/x					0.295 0.305 100
+P-Distr: Beam Cos(Theta)   TMath::Gaus(x,1.0,0.000001)	  0.9999975 1.0  2000
+##
+##	Mass	Radius	Length	Center (x,y,z)
+#Target: 2.80839 2.5	32.8   	0.0 0.0 0.0
+Target:  1000020040 0.75 28.8   0.0 0.0 0.0
+##
+## The reaction "particle"
+#Particle: 3He	2.80839	1	0	NULL	NULL
+Particle: 4He	1000020040	1	0	NULL	NULL
+##
+##	  Name		PDG	Decay?	Track?	Parent	Opt
+Particle  gamma1	22	0	1	4He	NULL
+Particle  4He1	1000020040	0	1	4He	NULL
+##
+Ntuple-Output:  out/4He/G4He_G4He_300MeV
+#Tree-Output:    out/4He/G4He_G4He_300MeV
