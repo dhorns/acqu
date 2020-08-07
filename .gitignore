@@ -41,4 +41,5 @@ CMakeLists.txt.user
 # root files for calibration
 /CaLib/analysis
 
-
+# Ignore AcquMC output files
+AcquMC/out/*/*.root
