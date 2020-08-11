@@ -5,8 +5,8 @@
 ############################################################
 #
 # Set Target parameters (used by TA2Physics.cc)
-Target:	0. 0. 0.	938.271  
-#Target:	0. 0. 0.	3727.838
+#Target:	0. 0. 0.	938.271  
+Target:	0. 0. 0.	3727.838
 #
 ############################################################
 # Set Physics class input parameters
