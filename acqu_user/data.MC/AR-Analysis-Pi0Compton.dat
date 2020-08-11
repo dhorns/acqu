@@ -5,7 +5,8 @@
 ############################################################
 #
 # Set Target parameters (used by TA2Physics.cc)
-Target:	0. 0. 0.	938.271  
+#Target:	0. 0. 0.	938.271  
+Target:	0. 0. 0.	3727.838
 #
 ############################################################
 # Set Physics class input parameters
@@ -25,7 +26,7 @@ Pi0-Invariant-Mass-Cuts: 125 145
 Produce-Tree-File: 0
 #
 # Tree file name if Produce-Tree-File is on
-Tree-File-Name: TA2Pi0ComptonMC.root
+Tree-File-Name: a2GoAT/TA2Pi0ComptonMC.root
 #
 ############################################################
 Initialise:
@@ -63,16 +64,23 @@ Display: 1D TaggerChannelPrompt 352	0 	352
 Display: 1D TaggerChannelRandom 352	0 	352
 Display: 1D MissingMassPrompt 	300	900 	1200
 Display: 1D MissingMassRandom 	300	900 	1200
+Display: 1D MissingEnergyPrompt 	600	-300 	300
+Display: 1D MissingEnergyRandom 	600	-300 	300
 Display: 1D PhotonThetaPrompt	180	0	180
 Display: 1D PhotonThetaRandom	180	0	180
 Display: 1D PhotonPhiPrompt	360	-180	180
 Display: 1D PhotonPhiRandom	360	-180	180
+#
+Display: 2D PhotonThetaPrompt 180 0 180 -1 MissingMassPrompt 300 900 1200 -1
+Display: 2D PhotonThetaPrompt 180 0 180 -1 NPhoton 10 0 10 -1
 #
 Display: 1D PromptRandomRatioPi0	100	0	1
 Display: 1D TaggerChannelPromptPi0 	352	0 	352
 Display: 1D TaggerChannelRandomPi0 	352	0 	352
 Display: 1D MissingMassPromptPi0 	300	900 	1200
 Display: 1D MissingMassRandomPi0 	300	900 	1200
+Display: 1D MissingEnergyPromptPi0 	600	-300 	300
+Display: 1D MissingEnergyRandomPi0 	600	-300 	300
 Display: 1D Pi0ThetaPrompt		180	0	180
 Display: 1D Pi0ThetaRandom		180	0	180
 Display: 1D Pi0PhiPrompt		360	-180	180
