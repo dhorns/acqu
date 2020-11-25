@@ -10,5 +10,4 @@ void FinishMacro( TString filename = "out/ARHistograms.root")
 
 	name = Form( "All histograms saved to %s", filename.Data());
 	std::cout << name << std::endl;
-
 }
