@@ -61,8 +61,6 @@ Branch:   mc_rnd_id     8
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #ROOT file(s) (GEANT4 output) to be analysed. Add more lines for more files
 #
-#TreeFile: ./geant.root
-#TreeFile: geant/pi0_4He_300_out.root
 TreeFile: geant/pi0_he4_200_out.root
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
@@ -73,7 +71,7 @@ BatchDir: ./
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #Directory to save any created ROOT files (include final '/')
-Directory: ./
+Directory: ./ARout
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
