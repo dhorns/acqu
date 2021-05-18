@@ -12,34 +12,38 @@
 #
 #
 #         Tree Name     No. of branches   Process Type
-Name:     h12           40                MC
+Name:     h12           38                MC
 #         Branch Name   Buffer size (bytes)
+Branch:	  nhits	 	4
 Branch:   npart         4
-Branch:   dircos        4096
+Branch:   ntaps		4
+Branch:   nvtaps        4
+Branch:   vhits         4
 Branch:   plab          2048
-Branch:   elab          2048
-Branch:   idpart        2048
+Branch:	  tctaps	2048
 Branch:   vertex        12
 Branch:   beam          16
-Branch:   nhits         4
+Branch:   dircos        4096
 Branch:   ecryst        2048
-Branch:   icryst        2048
-Branch:   enai          4
-Branch:   vhits         4
-Branch:   eveto         2048
-Branch:   iveto         2048
-Branch:   etot          4
-Branch:   eleak         4
-Branch:   ntaps         4
-Branch:   ictaps        2048
-Branch:   ectapsl       2048
-Branch:   ectapfs       2048
-Branch:   tctaps        2048
-Branch:   evtaps        2048
-Branch:   nvtaps        4
-Branch:   ivtaps        2048
 Branch:   tcryst        2048
+Branch:   ectapfs	2048
+Branch:   ectapsl	2048
+Branch:   elab          2048
+Branch:   eleak         4
+Branch:   enai          4
+Branch:   etot          4
+Branch:   eveto         2048
 Branch:   tveto         2048
+Branch:   evtaps        2048
+Branch:   icryst        2048
+Branch:   ictaps        2048
+Branch:   pcryst        2048
+Branch:   pctaps        2048
+#Branch:   pveto         2048
+#Branch:   pvtaps        2048
+Branch:   ivtaps        2048
+Branch:   idpart        2048
+Branch:   iveto         2048
 Branch:   nmwpc         4
 Branch:   imwpc         1024
 Branch:   mposx         1024
@@ -50,35 +54,15 @@ Branch:   npiz         	4
 Branch:   ipiz       	2048
 Branch:   epiz       	2048
 Branch:   tpiz      	2048
-Branch:   pcryst        2048
-Branch:   pctaps        2048
-Branch	  pvtaps	2048
-Branch:	  pveto		2048
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #ROOT file(s) (GEANT4 output) to be analysed. Add more lines for more files
 #
-#TreeFile: ./geant/compton_p_300_out.root
-#TreeFile: ./geant/pi0_p_320_out.root
-#TreeFile: ./geant/pi0_p_200_out.root
-#
-#TreeFile: ./geant/pi0_p_chan61_out.root
-#TreeFile: ./geant/pi0_p_chan65_out.root
-#TreeFile: ./geant/pi0_p_chan68_out.root
-#TreeFile: ./geant/pi0_p_chan71_out.root
-#TreeFile: ./geant/pi0_p_chan74_out.root
-#TreeFile: ./geant/pi0_p_chan78_out.root
-#TreeFile: ./geant/pi0_p_chan81_out.root
-#TreeFile: ./geant/pi0_p_chan85_out.root
-TreeFile: ./geant/pi0_p_chan88_out.root
-#TreeFile: ./geant/pi0_p_chan92_out.root
-#TreeFile: ./geant/pi0_p_chan96_out.root
-#TreeFile: ./geant/pi0_p_chan99_out.root
-#
-#TreeFile: ./geant/pi0_4He_300_out.root
-#TreeFile: ./geant/pi0_QFP_300_out.root
-#TreeFile: ./geant/pi0_QFN_300_out.root
+TreeFile: geant/pi0_p_320_out.root
+##
+#TreeFile: MC_output/Geant_Compton_2M_Tar1cm_12Jun19_0.root
+#TreeFile: MC_output/Geant_Pi0_2M_19Mar19_XXX.root
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -88,7 +72,10 @@ BatchDir: ./
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #Directory to save any created ROOT files (include final '/')
-Directory: out/
+#Directory: /home/edo/analysis/output/MC_compton/2018.03/
+#Directory: /home/edo/analysis/output/MC_compton/2018.03/Pi0/
+#Directory:  /home/mornacch/work/MC/2020.08_Compton/AcquOut/
+Directory:  out/
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -103,6 +90,6 @@ SetADC:  40000   640	 12
 #Class name for analysis class to be used in further processing
 Analysis:      TA2UserAnalysis
 #Configuration file for selected analysis class
-AnalysisSetup: AR-Analysis.dat
+AnalysisSetup: data.2018.03.MC/Analysis-MC.dat
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #

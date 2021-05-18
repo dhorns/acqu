@@ -83,8 +83,6 @@ Display: 1D MissingEnergyPromptPi0 	600	-300 	300
 Display: 1D MissingEnergyRandomPi0 	600	-300 	300
 Display: 1D Pi0ThetaPrompt		180	0	180
 Display: 1D Pi0ThetaRandom		180	0	180
-Display: 1D Pi0ThetaCMPrompt		180	0	180
-Display: 1D Pi0ThetaCMRandom		180	0	180
 Display: 1D Pi0PhiPrompt		360	-180	180
 Display: 1D Pi0PhiRandom		360	-180	180
 #
