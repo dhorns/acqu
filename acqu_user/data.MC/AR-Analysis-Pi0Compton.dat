@@ -62,8 +62,8 @@ Display: 1D TaggerPi0Time	1200	-600	600
 Display: 1D PromptRandomRatio	100	0	1
 Display: 1D TaggerChannelPrompt 352	0 	352
 Display: 1D TaggerChannelRandom 352	0 	352
-Display: 1D MissingMassPrompt 	300	900 	1200
-Display: 1D MissingMassRandom 	300	900 	1200
+Display: 1D MissingMassPrompt 	400	800 	1200
+Display: 1D MissingMassRandom 	400	800 	1200
 Display: 1D MissingEnergyPrompt 	600	-300 	300
 Display: 1D MissingEnergyRandom 	600	-300 	300
 Display: 1D PhotonThetaPrompt	180	0	180
@@ -71,14 +71,14 @@ Display: 1D PhotonThetaRandom	180	0	180
 Display: 1D PhotonPhiPrompt	360	-180	180
 Display: 1D PhotonPhiRandom	360	-180	180
 #
-Display: 2D PhotonThetaPrompt 180 0 180 -1 MissingMassPrompt 300 900 1200 -1
+Display: 2D PhotonThetaPrompt 180 0 180 -1 MissingMassPrompt 400 800 1200 -1
 Display: 2D PhotonThetaPrompt 180 0 180 -1 NPhoton 10 0 10 -1
 #
 Display: 1D PromptRandomRatioPi0	100	0	1
 Display: 1D TaggerChannelPromptPi0 	352	0 	352
 Display: 1D TaggerChannelRandomPi0 	352	0 	352
-Display: 1D MissingMassPromptPi0 	300	900 	1200
-Display: 1D MissingMassRandomPi0 	300	900 	1200
+Display: 1D MissingMassPromptPi0 	800	800 	1200
+Display: 1D MissingMassRandomPi0 	800	800 	1200
 Display: 1D MissingEnergyPromptPi0 	600	-300 	300
 Display: 1D MissingEnergyRandomPi0 	600	-300 	300
 Display: 1D Pi0ThetaPrompt		180	0	180
@@ -87,6 +87,8 @@ Display: 1D Pi0ThetaCMPrompt		180	0	180
 Display: 1D Pi0ThetaCMRandom		180	0	180
 Display: 1D Pi0PhiPrompt		360	-180	180
 Display: 1D Pi0PhiRandom		360	-180	180
+#
+Display: 2D Pi0ThetaPrompt 180 0 180 -1 MissingMassPromptPi0 400 800 1200 -1
 #
 Display: 1D CBESum		800 	0 	800
 Display: 1D NaINCluster		10	0	10

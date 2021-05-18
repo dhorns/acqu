@@ -54,8 +54,8 @@ Initialise:
 Period:  10000         root/macros/PeriodMacro.C   PeriodMacro()
 #
 #        Macro file name  		Macro funcion
-Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Compton_320.root")
-#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0_200.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Compton_320.root")
+Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0_320.root")
 #
 #Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan61.root")
 #Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan65.root")
