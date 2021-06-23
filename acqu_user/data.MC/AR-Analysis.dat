@@ -64,6 +64,23 @@ Finish:	 root/macros/FinishTree.C	FinishTree("out/ARH_Pi0_P_chan85.root")
 #Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0_QFP.root")
 #Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0_QFN.root")
 #Finish:	 root/macros/FinishBatch.C	FinishBatch()
+=======
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Compton_320.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0_320.root")
+#
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan61.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan65.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan68.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan71.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan74.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan78.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan81.root")
+Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan85.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan88.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan92.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan96.root")
+#Finish:	 root/macros/FinishMacro.C	FinishMacro("out/ARH_Pi0P_chan99.root")
+#
 #Finish:	 root/macros/FinishBatch.C	FinishBatch("A2G4")
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #

@@ -12,7 +12,7 @@
 #
 #
 #         Tree Name     No. of branches   Process Type
-Name:     h12           34                MC
+Name:     h12           40                MC
 #         Branch Name   Buffer size (bytes)
 Branch:   npart         4
 Branch:   dircos        4096
@@ -46,8 +46,14 @@ Branch:   mposx         1024
 Branch:   mposy         1024
 Branch:   mposz         1024
 Branch:   emwpc         1024
-Branch:   mc_evt_id     8
-Branch:   mc_rnd_id     8
+Branch:   npiz         	4
+Branch:   ipiz       	2048
+Branch:   epiz       	2048
+Branch:   tpiz      	2048
+Branch:   pcryst        2048
+Branch:   pctaps        2048
+Branch	  pvtaps	2048
+Branch:	  pveto		2048
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -58,9 +64,24 @@ Branch:   mc_rnd_id     8
 #TreeFile: ./geant/pi0_p_300_out.root
 TreeFile: ./geant/pi0_p_chan85_out.root
 #
-#TreeFile: ./geant/pi0_4He_300_out.root
-#TreeFile: ./geant/pi0_QFP_300_out.root
-#TreeFile: ./geant/pi0_QFN_300_out.root
+=======
+#TreeFile: ./geant/compton_p_320_out.root
+#TreeFile: ./geant/pi0_p_320_out.root
+#TreeFile: ./geant/pi0_p_200_out.root
+#
+#TreeFile: ./geant/pi0_p_chan61_out.root
+#TreeFile: ./geant/pi0_p_chan65_out.root
+#TreeFile: ./geant/pi0_p_chan68_out.root
+#TreeFile: ./geant/pi0_p_chan71_out.root
+#TreeFile: ./geant/pi0_p_chan74_out.root
+#TreeFile: ./geant/pi0_p_chan78_out.root
+#TreeFile: ./geant/pi0_p_chan81_out.root
+TreeFile: ./geant/pi0_p_chan85_out.root
+#TreeFile: ./geant/pi0_p_chan88_out.root
+#TreeFile: ./geant/pi0_p_chan92_out.root
+#TreeFile: ./geant/pi0_p_chan96_out.root
+#TreeFile: ./geant/pi0_p_chan99_out.root
+#
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -70,7 +91,7 @@ BatchDir: ./
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #Directory to save any created ROOT files (include final '/')
-Directory: ./
+Directory: out/
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
