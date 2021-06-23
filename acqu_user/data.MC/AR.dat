@@ -59,12 +59,6 @@ Branch:	  pveto		2048
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #ROOT file(s) (GEANT4 output) to be analysed. Add more lines for more files
 #
-#TreeFile: ./geant/compton_p_300_out.root
-#TreeFile: ./geant/compton_p_320_out.root
-#TreeFile: ./geant/pi0_p_300_out.root
-TreeFile: ./geant/pi0_p_chan85_out.root
-#
-=======
 #TreeFile: ./geant/compton_p_320_out.root
 #TreeFile: ./geant/pi0_p_320_out.root
 #TreeFile: ./geant/pi0_p_200_out.root
