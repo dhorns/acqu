@@ -5,8 +5,8 @@
 ############################################################
 #
 # Set Target parameters (used by TA2Physics.cc)
-#Target:	0. 0. 0.	938.271  
-Target:	0. 0. 0.	3727.838
+Target:	0. 0. 0.	938.271  
+#Target:	0. 0. 0.	3727.838
 #
 ############################################################
 # Set Physics class input parameters
@@ -23,7 +23,8 @@ Pi0-Random-Windows: 0 0 0 0
 Pi0-Invariant-Mass-Cuts: 125 145
 #
 # Produce Physics class tree file? 0/1 = off/on
-Produce-Tree-File: 0
+#Produce-Tree-File: 0
+Produce-Tree-File: 1
 #
 # Tree file name if Produce-Tree-File is on
 Tree-File-Name: a2GoAT/TA2Pi0ComptonMC.root

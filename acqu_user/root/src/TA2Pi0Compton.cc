@@ -824,4 +824,19 @@ void TA2Pi0Compton::Reconstruct()
 		fTree->Fill();
 	}
 }
+
+void TA2Pi0Compton::CloseTrees() {
+
+	if(fProduceTreeFile == 1) {
+
+	  printf("------------------\n");
+	  printf("Write Tree to file\n");
+	  printf("------------------\n");
+
+    		fFile->cd();
+    		fTree->Write();
+    		fFile->Close();
+	}
+}	
+
 ClassImp(TA2Pi0Compton)

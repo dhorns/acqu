@@ -178,15 +178,4 @@ class TA2Pi0Compton : public TA2Physics {
 	ClassDef(TA2Pi0Compton,1)
 };
 
-// ----------------------------------------------------------------------------
-
-inline void TA2Pi0Compton::CloseTrees() {
-
-	if(fProduceTreeFile == 1) {
-    		fFile->cd();
-    		fTree->Write();
-    		fFile->Close();
-	}
-}	
-
 #endif

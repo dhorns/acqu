@@ -1,18 +1,18 @@
-void FinishTree(Char_t* file = NULL)
+void FinishTree( TString filename = "out/ARHistograms.root")
 {
-    	TString name;
-	printf("\nEnd-of-Run macro executing:\n");
+	TString name;
 
-        printf("Closing tree files..."); 
+	std::cout << "End-of-Run macro executing" << std::endl;
+
+	std::cout << "Closing tree files..." << std::endl;
  	TA2Pi0Compton* comp = (TA2Pi0Compton*)(gAN->GetPhysics());
  	comp->CloseTrees();
-	printf(" done. \n");
 
-	printf("Saving defined histograms...");
-	if( !file) file = "ARHistograms.root";
-	TFile f1(file,"RECREATE");
+	std::cout << "Saving defined histograms..." << std::endl;
+	TFile outfile( filename, "recreate");
 	gROOT->GetList()->Write();
-	f1.Close();
-  	printf("done.\n",file);
-  	printf("All histograms saved to %s\n",file);
+	outfile.Close();
+
+	name = Form( "All histograms saved to %s", filename.Data());
+	std::cout << name << std::endl;
 }
